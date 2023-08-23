@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Spotify Search</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>A Playlist of Your Favorite Artists!</h1>
+    <div>
+        <label for="search-input">Search for an Artist:</label>
+        <input type="text"  id="search-input" action="/api/search">
+        <button method = "post" id="search-button">Search</button>
+    </div>
+
+
+    <div>
+        <label for="add-input">Enter the name of the songs you want to add to a playlist:</label>
+        <input type="text"  id="add-input" action="/add/song" name="song">
+        <button method = "post" id="add-button">Add the Song!</button>
+    </div>
+    
+    <a href='/playlist'>View my playlist</a>
+    <a href='/logout'>Logout</a>
+
+
+    <div id="results">
+        {% for track in tracks %}
+        <li>{{ track }}</li>
+        {% endfor %}
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+    {%if error1%}
+    <h1>OOPS! empty song name</a></h1>
+    {% endif %}
+   
+    {%if message1%}
+    <h1>add the song Successfully!</a></h1>
+    {% endif %}
+
+
+</body>
+</html>

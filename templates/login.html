@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login Page</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <h1>Login Page</h1>
+  <form action="{{url_for('login_function')}}" method="POST">
+    <input type="hidden" name="function" value="login">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" ,required="true"><br>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" ,required="true"><br>
+
+    <button type="submit">Login</button>
+    
+  </form>
+
+  <!-- <form form action="/callback" method="POST">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username"><br>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password"><br>
+
+    <button type="submit">Spotify Login</button>
+  </form> -->
+
+</div>
+<body>
+  <form action="{{url_for('login_function')}}" method="POST">
+    <input type="hidden" name="function" value="oauth">
+    <button type="submit">Login with Spotify</button>
+    
+  </form>
+  </body>
+ 
+  
+  {%if error1%}
+<h1>OOPS! empty username or password</a></h1>
+{% endif %}
+
+{%if error2%}
+<h1>OOPS! not matched username and password</a></h1>
+{% endif %}
+
+
+</body>
+<script src="script.js"></script>
+</html>
